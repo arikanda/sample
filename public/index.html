@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101116"><title>STARs — your little corner of the internet</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="app-shell" class="app-shell">
+    <aside class="rail"><div class="brand-mark">✦</div><div class="rail-line"></div><button class="rail-room active" title="STARs hangout">S</button><button class="rail-add" title="Your hangout">＋</button><div class="rail-bottom">●</div></aside>
+    <aside class="sidebar">
+      <header class="server-head"><div><small>YOUR SPACE</small><h1 id="room-title">STARs hangout</h1></div><span class="head-star">✧</span></header>
+      <div class="side-section"><div class="section-title">TEXT ROOMS <span>⌄</span></div><button class="channel selected"><span class="hash">#</span> general <i></i></button><button class="channel"><span class="hash">#</span> links <span class="soon">soon</span></button></div>
+      <div class="side-section voice-section"><div class="section-title">VOICE ROOMS <span>⌄</span></div><button class="channel voice-channel"><span class="voice-symbol">◖))</span> lounge <i></i></button><div id="voice-members" class="voice-members"></div></div>
+      <div class="side-spacer"></div>
+      <div class="profile"><div class="avatar self-avatar" id="self-avatar">Y</div><div class="profile-name"><strong id="self-name">You</strong><small id="connection-state">Connecting…</small></div><button id="settings-button" class="icon-button" title="Edit your name">⚙</button></div>
+    </aside>
+    <main id="main-area" class="main-area">
+      <header class="topbar"><div class="room-heading"><span class="hash large">#</span><strong>general</strong><span class="topbar-divider"></span><span class="topic">A cozy place to catch up ✨</span></div><div class="topbar-actions"><span id="online-count" class="online-count"><i></i> 1 here</span><button class="icon-button" id="invite-button" title="Copy invite link">↗</button></div></header>
+      <section id="screen-call-view" class="screen-call-view" hidden><div class="screen-stage"><video id="screen-stage-video" autoplay playsinline muted></video><div id="screen-stage-wait" class="screen-stage-wait">Waiting for the stream…</div><div id="screen-stage-title" class="screen-stage-title"></div><button id="screen-stage-exit" class="screen-stage-exit" type="button">Back to chat</button></div><div id="screen-participants" class="screen-participants"></div></section>
+      <section id="chat" class="chat-scroll"><div class="welcome"><div class="welcome-icon">✦</div><p class="eyebrow">A LITTLE SPACE FOR YOUR PEOPLE</p><h2>Welcome to <span>STARs</span></h2><p>Make yourself at home. Say hi, share a thought, or hop into the lounge together.</p><div class="welcome-rule"><span>✧</span></div><p class="starter-label">TODAY’S LITTLE BEGINNING</p></div><div id="messages" class="messages"></div></section>
+      <section id="call-panel" class="call-panel" hidden><div id="video-grid" class="video-grid"></div><div class="call-controls"><span id="call-status">Lounge is quiet</span><div><button id="mic-button" class="call-button" title="Join voice">🎙 Join voice</button><button id="camera-button" class="call-button" title="Turn camera on" disabled>▣ Camera</button><button id="screen-button" class="call-button" title="Share your screen" disabled>▤ Share screen</button><button id="leave-button" class="call-button leave" title="Leave voice" disabled>Leave</button></div></div></section>
+      <form id="chat-form" class="composer"><button type="button" class="composer-plus" title="Attachments coming soon">＋</button><input id="message-input" autocomplete="off" maxlength="1000" placeholder="Message #general"><button class="send-button" aria-label="Send message">↑</button></form>
+      <footer class="composer-note">Be kind. This is your space. <span>✦</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <section id="stream-popover" class="stream-popover" role="dialog" aria-label="Stream preview" hidden><header><span>Streaming Now</span><b class="live-pill">LIVE</b></header><div class="stream-preview-frame"><video id="stream-preview-video" autoplay playsinline muted></video><div id="stream-preview-placeholder">Waiting for stream…</div></div><div id="stream-preview-name" class="stream-preview-name"></div><button id="watch-stream-button" class="watch-stream-button" type="button" disabled>▣&nbsp; Watch Stream</button></section>
+  <dialog id="welcome-dialog" class="modal"><form id="join-form" method="dialog"><div class="modal-spark">✦</div><p class="eyebrow">YOUR PEOPLE, YOUR PLACE</p><h2>Welcome to <span>STARs</span></h2><p class="modal-copy">Pick a name and a room. Share the room name with your friends so they can join you.</p><label>Your name<input id="name-input" maxlength="24" placeholder="What should we call you?"></label><label>Room name<input id="room-input" maxlength="32" value="stargazing" placeholder="e.g. friday-night"></label><button class="primary-button" type="submit">Come on in <span>→</span></button><small class="privacy-note">Room names are public to anyone you share the link with.</small></form></dialog>
+  <dialog id="media-dialog" class="modal media-modal"><form method="dialog"><button class="modal-close" aria-label="Close">×</button><p class="eyebrow">YOUR DEVICES</p><h2>Make yourself at home</h2><p class="modal-copy">Choose a name others will recognize. Camera and microphone access is only requested when you join voice.</p><label>Your name<input id="edit-name-input" maxlength="24"></label><button id="save-name" class="primary-button" type="button">Save name <span>→</span></button></form></dialog>
+  <dialog id="theater-dialog" class="theater-modal"><header><strong id="theater-title">Screen share</strong><button id="theater-close" class="theater-close" aria-label="Close expanded video">×</button></header><div class="theater-stage"><video id="theater-video" autoplay playsinline muted></video></div><footer>Drag a corner to resize · Double-click to go fullscreen</footer></dialog>
+  <script src="/socket.io/socket.io.js"></script><script src="/app.js"></script>
+</body>
+</html>
